@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "fictional-gauteng-v1",
+  "title": "Gauteng demo",
+  "fictional": true,
+  "crs": "EPSG:32735",
+  "sourceDate": "2026-10-19",
+  "origin": {
+    "id": "demo-start",
+    "name": "Demo community centre",
+    "x": 594000,
+    "y": 7115000
+  },
+  "facilities": [
+    {
+      "id": "D-C1",
+      "name": "Demo West Clinic",
+      "category": "clinic",
+      "x": 591000,
+      "y": 7113500,
+      "latitude": -26.094797,
+      "longitude": 27.910002,
+      "verification": "Fictional demo",
+      "hours": "Not verified"
+    },
+    {
+      "id": "D-C2",
+      "name": "Demo North Clinic",
+      "category": "clinic",
+      "x": 595000,
+      "y": 7118500,
+      "latitude": -26.049397,
+      "longitude": 27.949633,
+      "verification": "Fictional demo",
+      "hours": "Not verified"
+    },
+    {
+      "id": "D-C3",
+      "name": "Demo Boundary Clinic",
+      "category": "clinic",
+      "x": 588500,
+      "y": 7116000,
+      "latitude": -26.072381,
+      "longitude": 27.884834,
+      "verification": "Fictional demo",
+      "hours": "Not verified"
+    },
+    {
+      "id": "D-L1",
+      "name": "Demo Learning Library",
+      "category": "library",
+      "x": 592000,
+      "y": 7118000,
+      "latitude": -26.054105,
+      "longitude": 27.919683,
+      "verification": "Fictional demo",
+      "hours": "Not verified"
+    },
+    {
+      "id": "D-L2",
+      "name": "Demo East Library",
+      "category": "library",
+      "x": 600500,
+      "y": 7112500,
+      "latitude": -26.103195,
+      "longitude": 28.005068,
+      "verification": "Fictional demo",
+      "hours": "Not verified"
+    }
+  ]
+}

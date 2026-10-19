@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+*.qgz~
+*.qgs~
+*-wal
+*-shm
+node_modules/
+.expo/
+dist/
+data/private/
+.env*
+!.env.example

@@ -1,0 +1,16 @@
+{
+  "category": "library",
+  "origin_count": 320,
+  "facility_count": 2,
+  "bands": {
+    "far": 205,
+    "moderate": 101,
+    "near": 14
+  },
+  "near_m": 1000,
+  "far_m": 3000,
+  "metric_crs": "EPSG:32735",
+  "method": "projected_straight_line",
+  "population_weighted": false,
+  "note": "Counts represent sample points, not people. Missing facilities mean unknown."
+}

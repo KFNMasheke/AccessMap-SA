@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "AccessMap SA",
+    "slug": "accessmap-sa",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": { "supportsTablet": true, "bundleIdentifier": "org.accessmapsa.concept" },
+    "android": { "package": "org.accessmapsa.concept", "permissions": [] },
+    "web": { "name": "AccessMap SA concept" }
+  }
+}
