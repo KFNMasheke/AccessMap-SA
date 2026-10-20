@@ -46,6 +46,36 @@ class CliTests(unittest.TestCase):
             with out.open() as stream:
                 self.assertEqual(next(csv.DictReader(stream))["nearest_name"], "'=1+1")
 
+    def test_summary_cannot_overwrite_input_and_ids_are_normalized(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / 'results.summary.json'
+            source.write_text('id,x,y\na,590250,7112250\n')
+            result = self.run_cli('--origins', str(source), '--output', str(Path(temp) / 'results.csv'))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertTrue(source.read_text().startswith('id,x,y'))
+            source.write_text('id,x,y\na,590250,7112250\n a ,590250,7112250\n')
+            result = self.run_cli('--origins', str(source), '--output', str(Path(temp) / 'other.csv'))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('unique', result.stderr)
+
+    def test_failed_staging_preserves_existing_files(self):
+        import importlib.util
+        from unittest.mock import patch
+        spec = importlib.util.spec_from_file_location('csv_analysis', ROOT / 'scripts/analyse.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp) / 'results.csv'
+            out.write_text('previous CSV')
+            sidecar = out.with_suffix('.summary.json')
+            sidecar.write_text('previous summary')
+            with patch.object(module.os, 'fsync', side_effect=OSError('disk full')):
+                with self.assertRaises(OSError):
+                    module.write_outputs(out, [{'id': 'example'}], {})
+            self.assertEqual(out.read_text(), 'previous CSV')
+            self.assertEqual(sidecar.read_text(), 'previous summary')
+            self.assertEqual(len(list(Path(temp).iterdir())), 2)
+
 
 if __name__ == "__main__":
     unittest.main()

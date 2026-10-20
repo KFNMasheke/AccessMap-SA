@@ -42,7 +42,7 @@ python scripts/analyse.py --category library --output outputs/library_access.csv
 python -m unittest discover -s tests -v
 ```
 
-For your own CSVs, use `--origins`, `--facilities`, `--near`, `--far`, `--crs` and `--output`. Both files must **already** have `x`/`y` in the same suitable projected metre CRS. `--crs` records metadata; it does not convert coordinates. Header-only templates are provided in `data/templates/`. CSV strings are escaped against spreadsheet formula injection. Output is validated before writing; an I/O failure can leave an incomplete file, which must be discarded.
+For your own CSVs, use `--origins`, `--facilities`, `--near`, `--far`, `--crs` and `--output`. Both files must **already** have `x`/`y` in the same suitable projected metre CRS. `--crs` records metadata; it does not convert coordinates. Header-only templates are provided in `data/templates/`. CSV strings are escaped against spreadsheet formula injection. Both destinations are protected against overwriting input paths. Outputs are staged before replacement, and each file is replaced atomically. The CSV and summary are two separate replacements: if replacement is interrupted, rerun before consuming the pair.
 
 ## Mobile concept
 
